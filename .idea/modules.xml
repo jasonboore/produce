@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/helmet_server.iml" filepath="$PROJECT_DIR$/helmet_server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/helmet_server_publish/helmet_server_publish.iml" filepath="$PROJECT_DIR$/helmet_server_publish/helmet_server_publish.iml" />
+      <module fileurl="file://$PROJECT_DIR$/helmet_server_subscribe/helmet_server_subscribe.iml" filepath="$PROJECT_DIR$/helmet_server_subscribe/helmet_server_subscribe.iml" />
+    </modules>
+  </component>
+</project>
