@@ -1,5 +1,6 @@
 package com.helmet.publish.controller;
 
+import com.helmet.publish.data.Temperature;
 import com.helmet.publish.service.PublishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,10 +22,9 @@ public class PublishController {
      * 发送消息
      */
     @PostMapping("/emqxPublish")
-    public  String  emqxPublish(@RequestBody Data data){
-
+    public  String  emqxPublish(@RequestBody Temperature data){
         publishService.sendToMqtt("helmet_topic",data.toString());
-        System.out.println(data.toString());
+        System.out.println("......................");
         return "success";
     }
 
