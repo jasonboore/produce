@@ -20,20 +20,19 @@ import java.util.concurrent.FutureTask;
 public class SubscribeService {
 
     @Autowired
-    private TemperatureHistoryService dataService;
-    TemperatureHistory temperatureHistory = new TemperatureHistory();
+    private TemperatureHistoryService temperatureService;
+
 
     @Autowired
     private LightHistoryService lightHistoryService;
-    LightHistory lightHistory = new LightHistory();
 
     @Autowired
     private GPSHistoryService gpsHistoryService;
-    GPSHistory gpsHistory = new GPSHistory();
+
 
     @Autowired
     private MpuHistoryService mpuHistoryService;
-    MpuHistory mpuHistory = new MpuHistory();
+
 
     @Autowired
     private CurrentDataService currentDataService;
@@ -72,6 +71,7 @@ public class SubscribeService {
 
 
     private void mpuHandler(JSONObject jsonObject) {
+        MpuHistory mpuHistory = new MpuHistory();
         int warning = jsonObject.getInt("warning");
         long time = System.currentTimeMillis();
         FutureTask<Void> futureTask = new FutureTask<>(() -> {
@@ -88,6 +88,7 @@ public class SubscribeService {
     }
 
     private void gpsHandler(JSONObject jsonObject) {
+        GPSHistory gpsHistory = new GPSHistory();
         long time = System.currentTimeMillis();
         double longitude = jsonObject.getDouble("longitude");
         double latitude = jsonObject.getDouble("latitude");
@@ -113,6 +114,7 @@ public class SubscribeService {
     }
 
     private void lightHandler(JSONObject jsonObject) {
+        LightHistory lightHistory = new LightHistory();
         long time = System.currentTimeMillis();
         double light = jsonObject.getDouble("light");
         FutureTask<Void> futureTask = new FutureTask<>(() -> {
@@ -129,13 +131,14 @@ public class SubscribeService {
     }
 
     private void temperatureHandler(JSONObject jsonObject) {
+        TemperatureHistory temperatureHistory = new TemperatureHistory();
         long time = System.currentTimeMillis();
         double temperature = jsonObject.getDouble("temperature");
         FutureTask<Void> futureTask = new FutureTask<>(() -> {
             temperatureHistory.setHelmet_id(jsonObject.getString("helmet_id"));
             temperatureHistory.setTime(System.currentTimeMillis());
             temperatureHistory.setTemperature(temperature);
-            dataService.saveTemperature(temperatureHistory);
+            temperatureService.saveTemperature(temperatureHistory);
             return null;
         });
         new Thread(futureTask).start();
