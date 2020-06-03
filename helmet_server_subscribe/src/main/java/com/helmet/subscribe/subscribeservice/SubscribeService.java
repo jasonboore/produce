@@ -144,6 +144,7 @@ public class SubscribeService {
         new Thread(futureTask).start();
         currentData.setTime(time);
         currentData.setTemperature(temperature);
+        System.out.println("!!!!!!!");
         currentDataService.saveCurrentData(currentData);
     }
 }
