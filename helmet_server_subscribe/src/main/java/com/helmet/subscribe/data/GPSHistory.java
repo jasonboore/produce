@@ -28,7 +28,18 @@ public class GPSHistory {
     private String E_W;
 
     @Column
+    private String altitude;
+
+    @Column
     private long time;
+
+    public String getAltitude() {
+        return altitude;
+    }
+
+    public void setAltitude(String altitude) {
+        this.altitude = altitude;
+    }
 
     public long getTime() {
         return time;

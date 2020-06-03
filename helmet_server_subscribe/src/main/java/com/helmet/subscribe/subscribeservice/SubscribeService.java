@@ -98,6 +98,7 @@ public class SubscribeService {
         String latitude = jsonObject.getString("latitude");
         String n_s = jsonObject.getString("N_S");
         String e_w = jsonObject.getString("E_W");
+        String altitude = jsonObject.getString("altitude");
         FutureTask<Void> futureTask = new FutureTask<>(() -> {
             gpsHistory.setHelmet_id(helmet_id);
             gpsHistory.setTime(time);
@@ -105,6 +106,7 @@ public class SubscribeService {
             gpsHistory.setLatitude(latitude);
             gpsHistory.setN_S(n_s);
             gpsHistory.setE_W(e_w);
+            gpsHistory.setAltitude(altitude);
             gpsHistoryService.saveGPS(gpsHistory);
             return null;
         });
@@ -114,6 +116,7 @@ public class SubscribeService {
         currentData.setLatitude(latitude);
         currentData.setN_S(n_s);
         currentData.setE_W(e_w);
+        currentData.setAltitude(altitude);
         currentData.setTime(time);
         currentDataService.saveCurrentData(currentData);
     }

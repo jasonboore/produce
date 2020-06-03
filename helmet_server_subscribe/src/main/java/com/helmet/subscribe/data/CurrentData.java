@@ -36,6 +36,9 @@ public class CurrentData {
     private String E_W;
 
     @Column
+    private String altitude;
+
+    @Column
     private long time;
 
     public String getHelmet_id() {
@@ -60,6 +63,14 @@ public class CurrentData {
 
     public void setWarning(int warning) {
         this.warning = warning;
+    }
+
+    public String getAltitude() {
+        return altitude;
+    }
+
+    public void setAltitude(String altitude) {
+        this.altitude = altitude;
     }
 
     public double getLight() {
