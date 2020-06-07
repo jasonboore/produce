@@ -42,7 +42,7 @@ public class SubscribeService {
     @ServiceActivator(inputChannel = Contants.MQTT_SUBSCRIBE_CHANNEL)
     public MessageHandler messageHandler() {
         MessageHandler messageHandler = message -> {
-            System.out.println("订阅者订阅消息头是：" + message.getHeaders().toString());
+            //System.out.println("订阅者订阅消息头是：" + message.getHeaders().toString());
             System.out.println("订阅者订阅消息内容是：" + message.getPayload().toString());
             JSONObject jsonObject = null;
             try{
